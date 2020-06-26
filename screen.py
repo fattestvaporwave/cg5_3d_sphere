@@ -18,6 +18,20 @@ class Screen:
             [0, 0, self.z_far / (self.z_far - self.z_near), 1],
             [0, 0, -((self.z_far * self.z_near) / (self.z_far - self.z_near)), 0]
         ])
+        self.translation_matrix = np.array([
+            [1, 0, 0, 0],
+            [0, 1, 0, 0],
+            [0, 0, 1, 0],
+            [0, 0, 2.5, 1]
+        ])
+        self.factor = 400
+        self.scaling_matrix = np.array([
+            [1 * self.factor, 0, 0, 0],
+            [0, 1 * self.factor, 0, 0],
+            [0, 0, 1, 0],
+            [0, 0, 0, 1]
+        ])
+        self.offset_vector = np.array([1.9, 1.9, 0, 0])
 
     def start(self):
         pygame.init()
