@@ -36,5 +36,3 @@ class Screen:
     def start(self):
         pygame.init()
         return pygame.display.set_mode((self.width, self.height))
-
-####################################

@@ -2,9 +2,12 @@ import numpy as np
 
 
 class Triangle:
-    def __init__(self, point1, point2, point3):
+    def __init__(self, points, textures):
         self.points = np.array([
-            point1, point2, point3
+            points[0], points[1], points[2]
+        ])
+        self.textures = np.array([
+            textures[0], textures[1], textures[2]
         ])
 
     def __str__(self):
