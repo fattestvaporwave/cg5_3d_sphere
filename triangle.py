@@ -9,6 +9,3 @@ class Triangle:
         self.textures = np.array([
             textures[0], textures[1], textures[2]
         ])
-
-    def __str__(self):
-        return str(self.points[0]) + "\n" + str(self.points[1]) + "\n" + str(self.points[2]) + "\n"

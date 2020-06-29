@@ -13,6 +13,16 @@ class Point:
 
 
 def put_pixel(x, y, u, v, image, screen):
+    """Function that seeks wanted pixel in the texture image based on the uv coordinates
+        and places it on the xy coordinates of the screen.
+
+        Parameters:
+        x, y (int): coordinates on which the pixel's color is changed
+        u, v (float): uv coordinates needed to extract the pixel from the texture image
+        image (Image): texture image
+        screen(pygame.screen): screen upon which the pixel is changed
+
+       """
     width = image.width
     height = image.height
 
@@ -32,8 +42,21 @@ def put_pixel(x, y, u, v, image, screen):
 
 
 def put_texture(points, texture_points, image, screen):
-    # source : http://www-users.mat.uni.torun.pl/~wrona/3d_tutor/tri_fillers.html
+    """Primary function for texturing the sphere. Perform calculation on the uv coordinates
+        of the triangle points to fill the triangle with texture.
 
+        For some reason the texturing omits some triangles in the mesh leaving them translucent.
+        Unfortunately, at this moment, I am unable to detect the reason.
+
+        source : http://www-users.mat.uni.torun.pl/~wrona/3d_tutor/tri_fillers.html
+
+        Parameters:
+        points (np.array): array of points of the mesh grid triangle that is to be textured
+        texture_points (np.array): uv coordinates of the points in the triangle
+        image (Image): texture image
+        screen (pygame.screen): screen upon which the sphere is to be textured
+
+       """
     image_rgb = image.convert('RGB')
     t_ps = [Point(points[i], texture_points[i]) for i in range(len(points))]
     t_ps.sort(key=lambda p: p.y)

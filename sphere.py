@@ -6,6 +6,16 @@ import numpy as np
 class Sphere:
 
     def __init__(self, radius, ns):
+        """Initializes the sphere. First it generates the points, their unit vector norms
+           and texture coordinates (for UV mapping). Then it arranges those points into triangles,
+           upon which the sphere mesh is constructed and drawn. Triangles contain the xyz coordinates
+           and uv coordinates.
+
+            Parameters:
+            radius (float): radius of the sphere
+            ns (int): number of meridians and parallels
+
+           """
         self.radius = radius
         self.ns = ns
         m = ns
@@ -105,8 +115,4 @@ class Sphere:
                             [pts[i * m + j + 1], pts[(i + 1) * m + j + 2], pts[(i + 1) * m + j + 1]],
                             [texture[i * m + j + 1], texture[(i + 1) * m + j + 2], texture[(i + 1) * m + j + 1]]
                         ))
-
         self.triangles = np.array(triangles)
-
-
-sphere = Sphere(2, 20)
